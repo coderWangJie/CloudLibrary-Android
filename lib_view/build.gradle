@@ -22,7 +22,6 @@ android {
 }
 
 dependencies {
-    api project(path: ':lib_view')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
 

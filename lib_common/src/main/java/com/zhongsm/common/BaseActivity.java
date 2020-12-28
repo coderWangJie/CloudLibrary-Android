@@ -15,8 +15,14 @@ import androidx.appcompat.app.AppCompatActivity;
 public abstract class BaseActivity extends AppCompatActivity {
 
     public abstract int assertLayoutResID();
-    public abstract void beforeResume();
 
+    public abstract void doOnCreated();
+    public abstract void doOnStart();
+    public abstract void doOnRestart();
+    public abstract void doOnResume();
+    public abstract void doOnPause();
+    public abstract void doOnStop();
+    public abstract void doOnDestroy();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,7 +31,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (assertLayoutResID() > 0) {
             setContentView(assertLayoutResID());
         } else {
-            setContentView(R.layout.common_404);
+            setContentView(R.layout.view_layout_404);
         }
     }
 
@@ -34,15 +40,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.setContentView(layoutResID);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onConfigurationChanged(@NonNull Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-    }
 
     @Override
     protected void onStart() {
@@ -50,7 +47,32 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
 }
