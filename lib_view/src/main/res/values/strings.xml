@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="view_404">404</string>
-    <string name="view_404_describe">The layout resource hasn\'t been set</string>
+    <string name="view_404_describe">The layout resource has not been set</string>
 </resources>

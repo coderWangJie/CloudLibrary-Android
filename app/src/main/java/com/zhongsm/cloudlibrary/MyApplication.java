@@ -16,6 +16,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        // 设置全局日志打印等级
         LogUtil.setLogLevel(Log.VERBOSE);
     }
 

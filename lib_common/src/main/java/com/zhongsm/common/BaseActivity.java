@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * @since 2020/12/28
  */
 public abstract class BaseActivity extends AppCompatActivity {
+    public static String TAG;
 
     public abstract int assertLayoutResID();
 
@@ -27,48 +28,57 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TAG = getClass().getSimpleName();
 
         if (assertLayoutResID() > 0) {
             setContentView(assertLayoutResID());
         } else {
             setContentView(R.layout.view_layout_404);
         }
-    }
 
-    @Override
-    public void setContentView(int layoutResID) {
-        super.setContentView(layoutResID);
+        doOnCreated();
     }
-
 
     @Override
     protected void onStart() {
         super.onStart();
+
+        doOnStart();
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
+
+        doOnRestart();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        doOnResume();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+
+        doOnPause();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+
+        doOnStop();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        doOnDestroy();
     }
 
     @Override
