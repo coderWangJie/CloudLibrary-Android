@@ -25,10 +25,6 @@
         android:name=".HomeActivity"
         android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity
-            android:name=".demo.ExamActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-
     </application>
 
 </manifest>

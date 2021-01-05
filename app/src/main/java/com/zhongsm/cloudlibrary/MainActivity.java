@@ -5,7 +5,6 @@ import android.os.SystemClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zhongsm.cloudlibrary.demo.ExamActivity;
 import com.zhongsm.common.BaseActivity;
 import com.zhongsm.common.LogUtil;
 
@@ -41,8 +40,8 @@ public class MainActivity extends BaseActivity {
 //        Intent intent = new Intent(this, HomeActivity.class);
 //        startActivity(intent);
 
-        Intent intent = new Intent(this, ExamActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, ExamActivity.class);
+//        startActivity(intent);
     }
 
     @Override
