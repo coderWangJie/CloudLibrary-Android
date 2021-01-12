@@ -34,5 +34,6 @@ dependencies {
     implementation project(path: ':bus_login')
     implementation project(path: ':bus_login')
 
+    // Alibaba ARouter，需要和 api 'com.alibaba:arouter-api:x.x.x' 配合使用
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
 }
