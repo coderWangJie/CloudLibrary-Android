@@ -1,7 +1,10 @@
 package com.zhongsm.cloudlibrary;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.zhongsm.common.ARouterMapping;
 import com.zhongsm.common.BaseActivity;
 
+@Route(path = ARouterMapping.Home.Home)
 public class HomeActivity extends BaseActivity {
 
     @Override
@@ -42,5 +45,11 @@ public class HomeActivity extends BaseActivity {
     @Override
     public void doOnDestroy() {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        setResult(321);
+        super.onBackPressed();
     }
 }

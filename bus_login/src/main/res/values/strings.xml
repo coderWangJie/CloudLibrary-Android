@@ -1,3 +1,7 @@
 <resources>
-    <string name="login_login">LoginActivity</string>
+    <string name="login_login">Login</string>
+    <string name="login_account_title">Account</string>
+    <string name="login_password_title">Password</string>
+
+
 </resources>

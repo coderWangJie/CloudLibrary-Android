@@ -10,6 +10,12 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -25,5 +31,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation project(path: ':lib_common')
+    implementation project(path: ':bus_login')
+    implementation project(path: ':bus_login')
 
+    annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
 }

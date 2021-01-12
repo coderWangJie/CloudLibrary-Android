@@ -2,14 +2,20 @@ package com.zhongsm.cloudlibrary;
 
 import android.content.Intent;
 import android.os.SystemClock;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.zhongsm.common.ARouterMapping;
 import com.zhongsm.common.BaseActivity;
 import com.zhongsm.common.LogUtil;
+import com.zhongsm.login.LoginActivity;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 
@@ -42,6 +48,29 @@ public class MainActivity extends BaseActivity {
 
 //        Intent intent = new Intent(this, ExamActivity.class);
 //        startActivity(intent);
+
+//        Intent intent = new Intent(this, LoginActivity.class);
+//        startActivity(intent);
+
+
+        Button btn1 = findViewById(R.id.btn1);
+        Button btn2 = findViewById(R.id.btn2);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build(ARouterMapping.Login.Login).navigation(MainActivity.this, 1);
+
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build(ARouterMapping.Home.Home).navigation(MainActivity.this, 2);
+
+            }
+        });
     }
 
     @Override
@@ -105,5 +134,11 @@ public class MainActivity extends BaseActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        LogUtil.d(TAG, "requestCode: " + requestCode + "\nresultCode:" + resultCode);
     }
 }
