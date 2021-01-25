@@ -1,3 +1,4 @@
+include ':bus_launcher'
 include ':lib_network'
 include ':lib_view'
 include ':lib_common'

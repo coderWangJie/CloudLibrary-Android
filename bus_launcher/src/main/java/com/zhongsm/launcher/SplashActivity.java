@@ -1,4 +1,4 @@
-package com.zhongsm.cloudlibrary;
+package com.zhongsm.launcher;
 
 import android.os.CountDownTimer;
 import android.widget.TextView;
@@ -22,7 +22,7 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public int assertLayoutResID() {
-        return R.layout.app_activity_splash;
+        return R.layout.launcher_activity_splash;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class SplashActivity extends BaseActivity {
 
             @Override
             public void onFinish() {
-                LogUtil.d(TAG, "onFinish");
+                LogUtil.d(BaseActivity.TAG, "onFinish");
 
                 ARouter.getInstance().build(ARouterMapping.Home.Main).navigation();
                 finish();

@@ -1,4 +1,4 @@
-package com.zhongsm.cloudlibrary;
+package com.zhongsm.launcher;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.zhongsm.common.constant.ARouterMapping;
@@ -9,7 +9,7 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     public int assertLayoutResID() {
-        return R.layout.app_activity_home;
+        return R.layout.launcher_activity_home;
     }
 
     @Override
@@ -25,11 +25,5 @@ public class HomeActivity extends BaseActivity {
     @Override
     public void doOnResume() {
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        setResult(321);
-        super.onBackPressed();
     }
 }

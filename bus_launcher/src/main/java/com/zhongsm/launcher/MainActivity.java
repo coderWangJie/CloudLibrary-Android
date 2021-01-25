@@ -1,4 +1,4 @@
-package com.zhongsm.cloudlibrary;
+package com.zhongsm.launcher;
 
 import android.content.Intent;
 import android.view.View;
@@ -24,22 +24,11 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public int assertLayoutResID() {
-        return R.layout.app_activity_main;
+        return R.layout.launcher_activity_main;
     }
 
     @Override
     public void doOnCreated() {
-
-//        Intent intent = new Intent(this, HomeActivity.class);
-//        startActivity(intent);
-
-//        Intent intent = new Intent(this, ExamActivity.class);
-//        startActivity(intent);
-
-//        Intent intent = new Intent(this, LoginActivity.class);
-//        startActivity(intent);
-
-
         Button btn1 = findViewById(R.id.btn1);
         Button btn2 = findViewById(R.id.btn2);
 
@@ -54,9 +43,7 @@ public class MainActivity extends BaseActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                ARouter.getInstance().build(ARouterMapping.Home.Home).navigation(MainActivity.this, 2);
-
-                LogUtil.d(TAG, "===== " + PushUtil.readDevicePushID(MainActivity.this));
+                LogUtil.d(BaseActivity.TAG, "===== " + PushUtil.readDevicePushID(MainActivity.this));
             }
         });
     }
@@ -91,10 +78,10 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        LogUtil.d(TAG, "lastBackTime = " + lastBackTime);
+        LogUtil.d(BaseActivity.TAG, "lastBackTime = " + lastBackTime);
         // TODO System.currentTimeMillis在高并发下会有性能瓶颈，这里是否需要考虑
         long now = System.currentTimeMillis();
-        LogUtil.d(TAG, "now = " + now);
+        LogUtil.d(BaseActivity.TAG, "now = " + now);
 
         if (now - lastBackTime > 1500) {
             lastBackTime = now;
@@ -107,6 +94,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        LogUtil.d(TAG, "requestCode: " + requestCode + "\nresultCode:" + resultCode);
+        LogUtil.d(BaseActivity.TAG, "requestCode: " + requestCode + "\nresultCode:" + resultCode);
     }
 }
