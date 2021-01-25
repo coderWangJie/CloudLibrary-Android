@@ -1,4 +1,4 @@
-package com.zhongsm.common;
+package com.zhongsm.common.constant;
 
 /**
  * @author WangJ
@@ -7,12 +7,14 @@ package com.zhongsm.common;
  */
 public class ARouterMapping {
 
+    public static class Home {
+        public static final String Home = "/app/home";
+        public static final String Main = "/app/main";
+    }
+
     public static class Login {
         public static final String Login = "/login/login";
         public static final String Login2 = "/login/login";
     }
 
-    public class Home {
-        public static final String Home = "/app/home";
-    }
 }

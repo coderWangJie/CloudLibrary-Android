@@ -1,4 +1,4 @@
-package com.zhongsm.common;
+package com.zhongsm.common.util;
 
 import android.util.Log;
 

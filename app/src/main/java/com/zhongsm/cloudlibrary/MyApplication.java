@@ -1,18 +1,21 @@
 package com.zhongsm.cloudlibrary;
 
-import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.zhongsm.common.LogUtil;
+import com.zhongsm.common.BaseApplication;
+import com.zhongsm.common.util.LogUtil;
+
+import cn.jpush.android.api.JPushInterface;
 
 /**
  * @author WangJ
  * @version 0.1
  * @since 2020/12/28
  */
-public class MyApplication extends Application {
+public class MyApplication extends BaseApplication {
+    
     @Override
     public void onCreate() {
         super.onCreate();
@@ -20,13 +23,24 @@ public class MyApplication extends Application {
         // 设置全局日志打印等级
         LogUtil.setLogLevel(Log.VERBOSE);
 
-        ARouter.openLog();     // Print log
-        ARouter.openDebug();
-        ARouter.init(this);
+        initARouter();
+
+        initJGPush();
     }
 
     @Override
     public Context getApplicationContext() {
         return super.getApplicationContext();
+    }
+
+    private void initARouter() {
+        ARouter.openLog();     // Print log
+        ARouter.openDebug();
+        ARouter.init(this);
+    }
+
+    private void initJGPush() {
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
     }
 }

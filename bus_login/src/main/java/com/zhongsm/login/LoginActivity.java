@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.zhongsm.common.ARouterMapping;
+import com.zhongsm.common.constant.ARouterMapping;
 import com.zhongsm.common.BaseActivity;
 
 @Route(path = ARouterMapping.Login.Login)

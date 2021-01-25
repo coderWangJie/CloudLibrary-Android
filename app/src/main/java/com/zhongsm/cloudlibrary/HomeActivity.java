@@ -1,7 +1,7 @@
 package com.zhongsm.cloudlibrary;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.zhongsm.common.ARouterMapping;
+import com.zhongsm.common.constant.ARouterMapping;
 import com.zhongsm.common.BaseActivity;
 
 @Route(path = ARouterMapping.Home.Home)
@@ -23,27 +23,7 @@ public class HomeActivity extends BaseActivity {
     }
 
     @Override
-    public void doOnRestart() {
-
-    }
-
-    @Override
     public void doOnResume() {
-
-    }
-
-    @Override
-    public void doOnPause() {
-
-    }
-
-    @Override
-    public void doOnStop() {
-
-    }
-
-    @Override
-    public void doOnDestroy() {
 
     }
 
