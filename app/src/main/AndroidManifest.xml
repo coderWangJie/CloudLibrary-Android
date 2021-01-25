@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- android:networkSecurityConfig="@xml/network_security_config" 配置允许进行 HTTP 访问 -->
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -13,13 +14,44 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity">
+        <!-- 如果使用的 JCore 是 2.0.0 及以上的版本，需要额外在 AndroidManifest 中配置一个 Service，以在更多手机平台上获得更稳定的支持（JCore1.x版本不需要） -->
+        <!-- Since JCore2.0.0 Required, SDK核心功能
+            这个是自定义 Service，要继承极光 JCommonService，可以在更多手机平台上使得推送通道保持的更稳定
+            可配置 android:process 参数将 Service 放在其他进程中；android:enabled 属性不能是 false -->
+        <service
+            android:name=".push.MyPushService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":pushCore">
+            <intent-filter>
+                <action android:name="cn.jiguang.user.service.action" />
+            </intent-filter>
+        </service>
+
+        <!-- Required since 3.0.7 -->
+        <!-- 新的 tag/alias 接口结果返回需要开发者配置一个自定的广播 -->
+        <!-- 3.3.0开始所有事件将通过该类回调，
+            需要继承 JPush 提供的 JPushMessageReceiver 类, 并如下新增一个 Intent-Filter -->
+        <receiver
+            android:name=".push.MyPushMessageReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
+
+                <category android:name="${applicationId}" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".MainActivity" />
 
         <activity
             android:name=".HomeActivity"

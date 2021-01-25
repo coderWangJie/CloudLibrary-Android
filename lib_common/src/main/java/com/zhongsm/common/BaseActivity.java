@@ -19,11 +19,19 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public abstract void doOnCreated();
     public abstract void doOnStart();
-    public abstract void doOnRestart();
+    public void doOnRestart(){
+
+    }
     public abstract void doOnResume();
-    public abstract void doOnPause();
-    public abstract void doOnStop();
-    public abstract void doOnDestroy();
+    public void doOnPause(){
+
+    }
+    public void doOnStop(){
+
+    }
+    public void doOnDestroy(){
+        
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

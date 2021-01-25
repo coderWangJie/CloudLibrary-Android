@@ -23,15 +23,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    api project(path: ':lib_view')
-
     implementation 'androidx.appcompat:appcompat:1.2.0'
 
-    // ARouter依赖
-    api 'com.alibaba:arouter-api:1.5.0'
-
-    // 极光推送
-    api 'cn.jiguang.sdk:jpush:3.9.1'
-    api 'cn.jiguang.sdk:jcore:2.6.0'
-    implementation project(path: ':lib_network')
+    // okHttp3 网络库
+    api 'com.squareup.okhttp3:okhttp:4.9.0'
 }

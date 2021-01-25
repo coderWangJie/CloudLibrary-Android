@@ -1,7 +1,6 @@
 package com.zhongsm.cloudlibrary;
 
 import android.content.Intent;
-import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -9,26 +8,14 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.zhongsm.common.ARouterMapping;
 import com.zhongsm.common.BaseActivity;
-import com.zhongsm.common.LogUtil;
-import com.zhongsm.login.LoginActivity;
+import com.zhongsm.common.constant.ARouterMapping;
+import com.zhongsm.common.util.LogUtil;
+import com.zhongsm.common.util.PushUtil;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MediaType;
-import okhttp3.OkHttp;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
-import okio.BufferedSink;
-
+@Route(path = ARouterMapping.Home.Main)
 public class MainActivity extends BaseActivity {
 
     private long lastBackTime;
@@ -67,19 +54,15 @@ public class MainActivity extends BaseActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ARouter.getInstance().build(ARouterMapping.Home.Home).navigation(MainActivity.this, 2);
+//                ARouter.getInstance().build(ARouterMapping.Home.Home).navigation(MainActivity.this, 2);
 
+                LogUtil.d(TAG, "===== " + PushUtil.readDevicePushID(MainActivity.this));
             }
         });
     }
 
     @Override
     public void doOnStart() {
-
-    }
-
-    @Override
-    public void doOnRestart() {
 
     }
 
@@ -103,21 +86,6 @@ public class MainActivity extends BaseActivity {
 //
 //            }
 //        });
-
-    }
-
-    @Override
-    public void doOnPause() {
-
-    }
-
-    @Override
-    public void doOnStop() {
-
-    }
-
-    @Override
-    public void doOnDestroy() {
 
     }
 
