@@ -1,6 +1,7 @@
 package com.zhongsm.launcher;
 
 import android.content.Intent;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,6 +15,18 @@ import com.zhongsm.common.BaseActivity;
 import com.zhongsm.common.constant.ARouterMapping;
 import com.zhongsm.common.util.LogUtil;
 import com.zhongsm.common.util.PushUtil;
+import com.zhongsm.net.NetworkUtil;
+import com.zhongsm.net.ResponseHandler;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 @Route(path = ARouterMapping.Home.Main)
 public class MainActivity extends BaseActivity {
@@ -30,6 +43,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public void doOnCreated() {
         Button btn1 = findViewById(R.id.btn1);
+        tv = findViewById(R.id.tv);
         Button btn2 = findViewById(R.id.btn2);
 
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +69,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void doOnResume() {
-//        OkHttpClient client  = new OkHttpClient();
+//        OkHttpClient client = new OkHttpClient();
 //        Request request = new Request.Builder()
 //                .url("http://apis.juhe.cn/simpleWeather/query?city=宁波")
 //                .get()
@@ -65,14 +79,29 @@ public class MainActivity extends BaseActivity {
 //            @Override
 //            public void onFailure(@NotNull Call call, @NotNull IOException e) {
 //                LogUtil.e("WangJ", "", e);
+//                tv.setText(e.getMessage());
+//
 //            }
 //
 //            @Override
 //            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-//                LogUtil.d("WangJ", response.body().string());
+//                String result = response.body().string();
+//                LogUtil.d("WangJ", result);
 //
+//                tv.setText(result);
 //            }
 //        });
+        NetworkUtil.get("http://apis.juhe.cn/simpleWeather/query?city=宁波", new ResponseHandler(Looper.myLooper()) {
+            @Override
+            public void success(String message) {
+                tv.setText(message);
+            }
+
+            @Override
+            public void fail(String message) {
+                tv.setText(message);
+            }
+        });
 
     }
 

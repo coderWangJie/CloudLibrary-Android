@@ -33,6 +33,5 @@ dependencies {
 
     implementation project(path: ':lib_common')
     implementation project(path: ':bus_login')
-    implementation project(path: ':bus_login')
     implementation project(path: ':bus_launcher')
 }

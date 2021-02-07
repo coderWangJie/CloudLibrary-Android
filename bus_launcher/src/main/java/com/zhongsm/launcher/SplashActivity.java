@@ -55,4 +55,14 @@ public class SplashActivity extends BaseActivity {
     public void doOnResume() {
         timer.start();
     }
+
+    @Override
+    public void doOnStop() {
+        super.doOnStop();
+        /* 需要消除，否则 CountDownTimer 的 handler 未及时释放持有的 Activity 引用，可能在下一次提前触发 CountDownTimer 的 onFinish()
+         * 如：在倒计时未完成时点击返回按钮，立即重新进入 SplashActivity，就可能由上一次的倒计时触发本次新开倒计时的 onFinish()
+         * 另一种方案是重写 Splash 的 onBackPressed()，不让他能退出
+         */
+        timer.cancel();
+    }
 }

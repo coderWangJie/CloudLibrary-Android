@@ -33,5 +33,5 @@ dependencies {
     // 极光推送
     api 'cn.jiguang.sdk:jpush:3.9.1'
     api 'cn.jiguang.sdk:jcore:2.6.0'
-    implementation project(path: ':lib_network')
+    api project(path: ':lib_network')
 }
